@@ -6,6 +6,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration
 public class MovieServiceImplTest {
@@ -13,7 +15,12 @@ public class MovieServiceImplTest {
 
     @Test
     @WithMockUser("admin")
-    public void testGetSecurity(){
-        System.out.println(service.getSecurity());
+    public void testGetSecurityPositive(){
+        assertNotNull(service.getSecurity());
+    }
+
+    @Test
+    public void testGetSecurityNegative(){
+        assertEquals("null",service.getSecurity());
     }
 }

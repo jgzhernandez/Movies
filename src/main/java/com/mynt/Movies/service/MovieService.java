@@ -2,6 +2,7 @@ package com.mynt.Movies.service;
 
 import com.mynt.Movies.model.Genre;
 import com.mynt.Movies.model.Movie;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 
@@ -13,5 +14,6 @@ public interface MovieService {
     List<Movie> getAllMoviesByOrderByYearReleased();
     List<Movie> getMoviesByGenreAndIsSequel(Genre genre, Boolean isSequel);
 
+    @PreAuthorize("isAuthenticated()")
     String getSecurity();
 }
