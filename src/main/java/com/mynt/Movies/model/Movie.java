@@ -28,6 +28,8 @@ public class Movie {
 
     @Column
     @Enumerated(EnumType.STRING)
+    @ElementCollection(targetClass = Genre.class)
+    @CollectionTable
     public List<Genre> genre;
 
     @Column

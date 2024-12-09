@@ -4,6 +4,8 @@ import com.mynt.Movies.model.Genre;
 import com.mynt.Movies.model.Movie;
 import com.mynt.Movies.repository.MoviesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,5 +52,11 @@ public class MovieServiceImpl implements MovieService{
             }
         }
         return filteredMovies;
+    }
+
+    @Override
+    public String getSecurity() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return "" + auth;
     }
 }
