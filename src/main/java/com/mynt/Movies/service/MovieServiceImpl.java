@@ -4,6 +4,7 @@ import com.mynt.Movies.model.Genre;
 import com.mynt.Movies.model.Movie;
 import com.mynt.Movies.repository.MoviesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,7 @@ public class MovieServiceImpl implements MovieService{
         return filteredMovies;
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Override
     public String getSecurity() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
