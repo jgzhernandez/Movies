@@ -24,7 +24,7 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public List<Movie> getAllMovies() {
-        List<Movie> movies = new ArrayList<Movie>();
+        List<Movie> movies = new ArrayList<>();
         moviesRepository.findAll().forEach(movies::add);
         return movies;
     }
